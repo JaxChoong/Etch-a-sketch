@@ -1,0 +1,10 @@
+*{
+    display:flex;
+}
+#interface{
+    width:auto;
+}
+
+.grid{
+    border:solid;
+}
