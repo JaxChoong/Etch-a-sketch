@@ -50,7 +50,6 @@ function changeGridColor(grid){
     }
     else{
         grid.style.backgroundColor = darkenColor(grid.style.backgroundColor)
-        console.log(`${grid.style.backgroundColor}`)
     }
 }
 
