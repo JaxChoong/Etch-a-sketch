@@ -1,10 +1,15 @@
 *{
-    display:flex;
+    justify-content: center;
 }
 #interface{
-    width:auto;
+    display:flex;
+    flex-wrap: nowrap;
 }
 
 .grid{
+    display:flex;
     border:solid;
+    min-height:50px;
+    min-width: 50px;
+    flex:1 0 auto ;
 }
