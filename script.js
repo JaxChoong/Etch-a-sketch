@@ -15,11 +15,43 @@ for(let i = 0; i< 16; i++){
 
 const squares = document.querySelectorAll(".grid")
 squares.forEach((square)=>{
-    square.addEventListener("mouseover", ()=>{changeGridColor(square)})
+    square.addEventListener("mouseover", ()=>{
+        
+        changeGridColor(square)
+    })
 })
 
+
+function darkenColor(color) {
+    // Remove "rgb(" and ")" from the color string
+    const rgbValues = color.substring(4, color.length - 1).split(",");
+
+    // Change rgb values to integers
+    let r = parseInt(rgbValues[0]);
+    let g = parseInt(rgbValues[1]);
+    let b = parseInt(rgbValues[2]);
+    
+    // Darken each color by 10% (so it only takes 10 times before it turns black)
+    r = Math.max(0, Math.floor(r * 0.9));
+    g = Math.max(0, Math.floor(g * 0.9));
+    b = Math.max(0, Math.floor(b * 0.9));
+    
+    // Construct and return the new color string
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function changeGridColor(grid){
-    grid.style.backgroundColor = "green"
+    if(!grid.style.backgroundColor){
+        const r =  Math.floor(Math.random() * 256);
+        const g =  Math.floor(Math.random() * 256)
+        const b =  Math.floor(Math.random() * 256)
+
+        grid.style.backgroundColor = `rgb(${r},${g},${b})`
+    }
+    else{
+        grid.style.backgroundColor = darkenColor(grid.style.backgroundColor)
+        console.log(`${grid.style.backgroundColor}`)
+    }
 }
 
 
@@ -48,7 +80,8 @@ gridButton.addEventListener("click",()=>{
         //Adds event listeners to new squares
         const squares = document.querySelectorAll(".grid")
         squares.forEach((square)=>{
-        square.addEventListener("mouseover", ()=>{changeGridColor(square)})
+        square.addEventListener("mouseover", ()=>{
+            changeGridColor(square)})
         })
     }
 })
